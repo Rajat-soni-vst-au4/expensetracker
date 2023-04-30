@@ -19,9 +19,9 @@ function addExpense() {
         category,
         date: new Date()
     };
-    // amountInput.value = "";
-    // type.value = "";
-    // categorySelect.selectedIndex = 0;
+    amountInput.value = "";
+    type.value = "";
+    categorySelect.selectedIndex = 0;
 
     //either empty array or storing data in array (object in array)
     let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -63,26 +63,17 @@ function displayExpenses() {
         expenseList.appendChild(li);
     });
 }
-function deleteExpense(index) {
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-    expenses.splice(index, 1);
-
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-
-    displayExpenses();
-}
 
 function editExpense(index) {
     let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-    let expense = expenses[index];
+    const expense = expenses[index];
 
-    let amountInput = document.getElementById("amount");
-    let typeSelect = document.getElementById("type");
-    let categorySelect = document.getElementById("category");
+    const amountInput = document.getElementById("amount");
+    const typeSelect = document.getElementById("type");
+    const categorySelect = document.getElementById("category");
 
     amountInput.value = expense.amount;
-    typeSelect.value = expense.type;
+    spendDetail.value = expense.type;
     categorySelect.value = expense.category;
 
     expenses.splice(index, 1);
@@ -93,5 +84,3 @@ function editExpense(index) {
 }
 
 displayExpenses();
-
-
