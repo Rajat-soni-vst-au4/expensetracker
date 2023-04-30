@@ -63,4 +63,35 @@ function displayExpenses() {
         expenseList.appendChild(li);
     });
 }
+function deleteExpense(index) {
+    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    expenses.splice(index, 1);
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    displayExpenses();
+}
+
+function editExpense(index) {
+    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    let expense = expenses[index];
+
+    let amountInput = document.getElementById("amount");
+    let typeSelect = document.getElementById("type");
+    let categorySelect = document.getElementById("category");
+
+    amountInput.value = expense.amount;
+    typeSelect.value = expense.type;
+    categorySelect.value = expense.category;
+
+    expenses.splice(index, 1);
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    displayExpenses();
+}
+
+displayExpenses();
+
 
