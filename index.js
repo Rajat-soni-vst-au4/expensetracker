@@ -63,6 +63,15 @@ function displayExpenses() {
         expenseList.appendChild(li);
     });
 }
+function deleteExpense(index) {
+    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    expenses.splice(index, 1);
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    displayExpenses();
+}
 
 function editExpense(index) {
     let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
